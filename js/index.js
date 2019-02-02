@@ -25,24 +25,29 @@ body.addEventListener('keydown', (event) => {
     navigation.style.backgroundColor = 'rgba(255, 235, 205, 0.8)';
 });
 
-// wheel (A wheel button of a pointing device is rotated in any direction.)
-
-
 // #4 drag (An element or text selection is being dragged (Fired continuously every 350ms).) / drop (An element is dropped on a valid drop target.)
 let noImage = document.querySelectorAll('img');
 noImage.forEach(elem => {
     elem.ondrag = (event) => {
-        elem.style.opacity = '.5';
+        elem.style.opacity = '.1';
         event.stopPropagation();
     }
 });
 
-// load (A resource and its dependent resources have finished loading.)
+// #5 load (A resource and its dependent resources have finished loading.)
+window.addEventListener('load', (event) => {
+    const myArea = document.createElement('textarea'); //creating new element <textarea>
+    myArea.className = 'test-input'; // set class name
+    myArea.style.width = '200px';
+    myArea.style.marginTop = '20px';
+    myArea.style.display = 'none'; // <---- <textarea> styling
+
+    const myParrent = document.querySelector('.destination'); // grabing parent
+    myParrent.appendChild(myArea);
+});
 
 
-
-
-// #5 focus (An element has received focus (does not bubble).)
+// #6 focus (An element has received focus (does not bubble).)
 let anchors = document.querySelectorAll('a');
 anchors.forEach(elem => {
     elem.onfocus = (event) => {
@@ -52,7 +57,7 @@ anchors.forEach(elem => {
         elem.style.color = 'white';
         elem.style.borderRadius = '5px';
     }
-// #6 blur (An element has lost focus (does not bubble).)
+// #7 blur (An element has lost focus (does not bubble).)
     elem.onblur = (event) => {
         elem.style.border = 'none';
         elem.style.backgroundColor = 'transparent';
@@ -62,18 +67,46 @@ anchors.forEach(elem => {
     }
 });
 
-// resize (The document view has been resized.)
-//TO-DO: img animation?
-
-// #7 scroll (The document view or an element has been scrolled.)
+// #8 scroll (The document view or an element has been scrolled.)
 window.addEventListener('scroll', (event) => {
     body.style.background = 'linear-gradient(55deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 85%)'; 
     event.stopPropagation();
     event.preventDefault();
 });
 
-// select (Some text is being selected.) NO ELEMENT TO APPLY ON
-//NOTE: in HTML, select events can be dispatched only on form <input type="text"> and <textarea> elements
-//TO-DO: create text area where should be output of dblclick appear, onselect -> text - display:none.
+// #9 dblclick (A pointing device button is clicked twice on an element.)
+let firstButton = document.querySelector('.btn');
+firstButton.addEventListener('dblclick', (event) => {
+    let myArea = document.querySelector('.test-input');
+    myArea.style.display = 'initial';
+    myArea.innerHTML = 'You clicked this button!';
+});
+firstButton.addEventListener('click', (event) => {
+    let myArea = document.querySelector('.test-input');
+    myArea.style.display = 'initial';
+    myArea.innerHTML = 'Hello!';
+});
 
-//dblclick (A pointing device button is clicked twice on an element.)
+// #10 select (Some text is being selected.)
+//NOTE: in HTML, select events can be dispatched only on form <input type="text"> and <textarea> elements
+//NOTE: we can't put eventListener directly on the dinamically created element
+
+document.querySelector('body').addEventListener('select', function(event) {
+    if (event.target.tagName.toLowerCase() === 'textarea') {
+        let myTextArea = document.querySelector('.test-input');
+        myTextArea.innerHTML = '';
+    }
+});
+
+// resize (The document view has been resized.)
+//TO-DO: change all img
+
+// document.querySelector('body').addEventListener('resize', function(event) {
+//     document.querySelectorAll('img').forEach(elem => {
+//         elem.src = 'img/bananas.jpeg';
+//     });
+// });
+
+
+
+// wheel (A wheel button of a pointing device is rotated in any direction.
