@@ -41,9 +41,10 @@ window.addEventListener('load', (event) => {
     myArea.style.width = '200px';
     myArea.style.marginTop = '20px';
     myArea.style.display = 'none'; // <---- <textarea> styling
-
     const myParrent = document.querySelector('.destination'); // grabing parent
     myParrent.appendChild(myArea);
+    document.body.style.backgroundImage = 'repeating-linear-gradient(45deg, yellow, yellow 10px, red 10px, red 20px)';
+    document.body.style.color = '#164566';
 });
 
 
@@ -65,26 +66,30 @@ anchors.forEach(elem => {
         elem.style.color = '#212529';
         elem.style.borderRadius = 'none';
     }
+    elem.onclick = (event) => {
+        event.preventDefault(); //prevent refreshing the page
+    }
 });
 
 // #8 scroll (The document view or an element has been scrolled.)
 window.addEventListener('scroll', (event) => {
     body.style.background = 'linear-gradient(55deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 85%)'; 
-    event.stopPropagation();
-    event.preventDefault();
 });
 
 // #9 dblclick (A pointing device button is clicked twice on an element.)
 let firstButton = document.querySelector('.btn');
+
 firstButton.addEventListener('dblclick', (event) => {
     let myArea = document.querySelector('.test-input');
     myArea.style.display = 'initial';
     myArea.innerHTML = 'You clicked this button!';
 });
+
 firstButton.addEventListener('click', (event) => {
     let myArea = document.querySelector('.test-input');
     myArea.style.display = 'initial';
     myArea.innerHTML = 'Hello!';
+    firstButton.style.color = '#17A2B8';
 });
 
 // #10 select (Some text is being selected.)
@@ -101,11 +106,12 @@ document.querySelector('body').addEventListener('select', function(event) {
 // resize (The document view has been resized.)
 //TO-DO: change all img
 
-// document.querySelector('body').addEventListener('resize', function(event) {
-//     document.querySelectorAll('img').forEach(elem => {
-//         elem.src = 'img/bananas.jpeg';
-//     });
-// });
+document.querySelector('body').addEventListener('click', function(event) {
+    let allImgs = document.querySelectorAll('img');
+    allImgs.forEach(elem => {
+        elem.src = './img/bananas.jpeg';
+    });
+});
 
 
 
