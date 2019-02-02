@@ -29,7 +29,8 @@ body.addEventListener('keydown', (event) => {
 let noImage = document.querySelectorAll('img');
 noImage.forEach(elem => {
     elem.ondrag = (event) => {
-        elem.style.opacity = '.1';
+        elem.src = 'img/bananas.jpeg';
+        // elem.style.opacity = '.1';
         event.stopPropagation();
     }
 });
@@ -57,6 +58,7 @@ anchors.forEach(elem => {
         elem.style.padding = '5px';
         elem.style.color = 'white';
         elem.style.borderRadius = '5px';
+        event.stopPropagation();
     }
 // #7 blur (An element has lost focus (does not bubble).)
     elem.onblur = (event) => {
@@ -106,12 +108,12 @@ document.querySelector('body').addEventListener('select', function(event) {
 // resize (The document view has been resized.)
 //TO-DO: change all img
 
-document.querySelector('body').addEventListener('click', function(event) {
-    let allImgs = document.querySelectorAll('img');
-    allImgs.forEach(elem => {
-        elem.src = './img/bananas.jpeg';
-    });
-});
+// document.querySelector('body').addEventListener('click', function(event) {
+//     let allImgs = document.querySelectorAll('img');
+//     allImgs.forEach(elem => {
+//         elem.src = './img/bananas.jpeg';
+//     });
+// });
 
 
 
