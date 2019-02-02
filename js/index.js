@@ -27,13 +27,21 @@ body.addEventListener('keydown', (event) => {
 
 // #4 drag (An element or text selection is being dragged (Fired continuously every 350ms).) / drop (An element is dropped on a valid drop target.)
  
-document.querySelectorAll('img, p').forEach(elem => {
+document.querySelectorAll('img, p, h2, h4').forEach(elem => {
     elem.ondrag = (event) => {
         if(event.target.tagName.toLowerCase() === 'img') {
             elem.src = 'img/bananas.jpeg';
         }
         if(event.target.tagName.toLowerCase() === 'p') {
             elem.style.display = 'none';
+        }
+        if(event.target.tagName.toLowerCase() === 'h2') {
+            elem.style.color = 'red';
+            elem.innerHTML = 'WHO ATE THEM ALL?!';
+        }
+        if(event.target.tagName.toLowerCase() === 'h4') {
+            elem.style.color = 'red';
+            elem.innerHTML = 'BANANAS!';
         }
     }
 });
@@ -95,6 +103,7 @@ firstButton.addEventListener('click', (event) => {
     myArea.style.display = 'initial';
     myArea.innerHTML = 'Hello!';
     firstButton.style.color = '#17A2B8';
+    firstButton.innerHTML = 'BANANAS!'
 });
 
 // #10 select (Some text is being selected.)
