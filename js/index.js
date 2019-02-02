@@ -7,13 +7,11 @@ document.querySelectorAll('.btn').forEach(node => {
     node.onmouseover =  (event) => {
         node.style.color = "#f9c27a";
         node.style.backgroundColor = "white";
-        event.stopPropagation();
     }
 // #2 mouseleave (A pointing device is moved off the element that has the listener attached.)
     node.onmouseleave = (event) => {
         node.style.color = "white";
         node.style.backgroundColor = "#f9c27a";
-        event.stopPropagation();
     }
 });
 
@@ -43,6 +41,26 @@ document.querySelectorAll('img, p, h2, h4').forEach(elem => {
             elem.style.color = 'red';
             elem.innerHTML = 'BANANAS!';
         }
+
+        // let tagName = event.target.tagName.toLowerCase();
+        // const switcher = (elem, tagName) => {
+        //     switch (tagName) {
+        //         case 'img':
+        //             elem.src = 'img/bananas.jpeg';
+        //             break;
+        //         case 'p':
+        //             elem.style.display = 'none';
+        //             break;
+        //         case 'h2':
+        //             elem.style.color = 'red';
+        //             elem.innerHTML = 'WHO ATE THEM ALL?!';
+        //             break;
+        //         case 'h4':
+        //             elem.style.color = 'red';
+        //             elem.innerHTML = 'BANANAS!';
+        //             break;
+        //     }
+        // } // <---------------------- tryied to creat switch, but it doesn't work:/
     }
 });
 
@@ -104,7 +122,12 @@ firstButton.addEventListener('click', (event) => {
     myArea.innerHTML = 'Hello!';
     firstButton.style.color = '#17A2B8';
     firstButton.innerHTML = 'BANANAS!'
+    event.stopPropagation();
 });
+let firstDestenation = document.querySelector('.destination');
+firstDestenation.addEventListener('click', (event) => {
+    alert("I'm parrent!");
+})
 
 // #10 select (Some text is being selected.)
 //NOTE: in HTML, select events can be dispatched only on form <input type="text"> and <textarea> elements
