@@ -26,12 +26,15 @@ body.addEventListener('keydown', (event) => {
 });
 
 // #4 drag (An element or text selection is being dragged (Fired continuously every 350ms).) / drop (An element is dropped on a valid drop target.)
-let noImage = document.querySelectorAll('img');
-noImage.forEach(elem => {
+ 
+document.querySelectorAll('img, p').forEach(elem => {
     elem.ondrag = (event) => {
-        elem.src = 'img/bananas.jpeg';
-        // elem.style.opacity = '.1';
-        event.stopPropagation();
+        if(event.target.tagName.toLowerCase() === 'img') {
+            elem.src = 'img/bananas.jpeg';
+        }
+        if(event.target.tagName.toLowerCase() === 'p') {
+            elem.style.display = 'none';
+        }
     }
 });
 
